@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import "normalize.css";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ToDo from './components/todo/todo.js';
-import { SettingsContext } from './context/settings.js';
+import SettingsContext from './context/settings.js';
 
-export default class App extends React.Component {
-  
-  render() {
-    const { setting, setSetting } = useContext(SettingsContext)
-    return (
-      <SettingsContext.Provider value={{setting, setSetting}}>
-        <ToDo />
-      </SettingsContext.Provider>
-    );
-  }
+export default function app() {
+  return (
+		<SettingsContext>
+			<ToDo />
+		</SettingsContext>
+	);
 }
