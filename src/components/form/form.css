@@ -1,0 +1,15 @@
+form {
+  border: red 2px solid;
+  padding: 30px;
+  margin-left: 30px;
+  max-width: fit-content;
+  background-color: rgb(196, 231, 186);
+}
+
+.formBorder {
+  margin-left: 43%;
+}
+
+.title {
+  background-color: blue;
+}
