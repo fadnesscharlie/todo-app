@@ -4,6 +4,7 @@ import useForm from '../../hooks/form.js';
 import Form from '../form/form.js'
 import List from '../list/list.js'
 import Header from '../header/header.js'
+import Footer from '../footer/footer.js';
 
 import { v4 as uuid } from 'uuid';
 import { SettingsContext } from '../../context/settings.js';
@@ -34,7 +35,7 @@ const ToDo = () => {
 	function toggleComplete(id) {
 		const items = setting.list.map((item) => {
 			if (item.id == id) {
-				item.complete != item.complete;
+				item.complete ? item.complete = false : item.complete = true;
 			}
 			return item;
 		});
@@ -65,9 +66,12 @@ const ToDo = () => {
       />
 
       <List 
-        setting={setting} 
+        setting={setting}
+        setSetting={setSetting} 
         toggleComplete={toggleComplete} 
       />
+
+      <Footer />
 		</>
 	);
 };

@@ -1,0 +1,32 @@
+.page-numbers {
+  display: flex;
+}
+
+.page-numbers > li {
+  margin-right: 0.3em;
+  color: blue;
+  cursor: pointer;
+}
+
+.renderPageNumbers {
+  list-style-type: none;
+}
+
+.renderPerPage {
+  margin-left: 10px;
+  color: blue;
+}
+
+.renderPerPageTopLevel {
+  font-size: 1.2em;
+  padding: 20px;
+}
+
+.Card-toplevel {
+  display: flex;
+  padding: 20px;
+}
+
+.CurrentTodos {
+  width: 33%;
+}

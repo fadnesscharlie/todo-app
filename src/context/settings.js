@@ -8,8 +8,10 @@ function settingsProvider(props) {
 		list: [],
 		incomplete: [],
 		values: {},
-    display: 3,
+    currPageNumber: 1,
+    perPage: 3,
     sort: [],
+    complete: []
 	});
 
   return(
