@@ -56,9 +56,7 @@ const ToDo = () => {
 	}, [setting.list]);
 	return (
 		<>
-      <Header 
-        setting={setting} 
-      />
+      <Header />
 
 			<Form 
         handleChange={handleChange} 
@@ -66,8 +64,6 @@ const ToDo = () => {
       />
 
       <List 
-        setting={setting}
-        setSetting={setSetting} 
         toggleComplete={toggleComplete} 
       />
 
