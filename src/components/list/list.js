@@ -1,30 +1,34 @@
 // import { Card, Elevation } from '@blueprintjs/core';
+import {useContext } from 'react'
 import { Card } from 'react-bootstrap';
 import './list.css';
 
+import { SettingsContext } from '../../context/settings.js';
+
 export default function list(props) {
+	const { setting, setSetting } = useContext(SettingsContext);
 	function handleClick(e) {
-		props.setSetting({
-			...props.setting,
+		setSetting({
+			...setting,
 			currPageNumber: e.target.id,
 		});
 	}
 
 	function perPageHandleClick(e) {
-		props.setSetting({
-			...props.setting,
+		setSetting({
+			...setting,
 			perPage: e.target.id,
 		});
 	}
 
-	const lastTodos = props.setting.currPageNumber * props.setting.perPage;
-	const firstTodos = lastTodos - props.setting.perPage;
-	const currentTodos = props.setting.list.slice(firstTodos, lastTodos);
+	const lastTodos = setting.currPageNumber * setting.perPage;
+	const firstTodos = lastTodos - setting.perPage;
+	const currentTodos = setting.list.slice(firstTodos, lastTodos);
 
 	const pageNumbers = [];
 	for (
 		let i = 1;
-		i <= Math.ceil(props.setting.list.length / props.setting.perPage);
+		i <= Math.ceil(setting.list.length / setting.perPage);
 		i++
 	) {
 		pageNumbers.push(i);
