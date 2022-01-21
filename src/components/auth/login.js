@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
@@ -17,14 +17,14 @@ export default function Login() {
 	const handleChangePassword = (e) => {
 		setPassword(e.target.value);
 	};
-	const handleClickCapability = (e) => {
-		console.log('e.target.values:', e.target.value);
-		setCapability(e.target.value);
-	};
+	// const handleClickCapability = (e) => {
+	// 	console.log('e.target.values:', e.target.value);
+	// 	setCapability(e.target.value);
+	// };
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('capability:', capability);
-		state.login(username);
+		state.login(capability, username, password);
 	};
 
 	let loginDisplay = state.loggedIn ? (
@@ -45,8 +45,9 @@ export default function Login() {
 			/>
 			<DropdownButton
 				id='dropdown-basic-button'
-				title='Dropdown button'
+				title='Role'
 				variant='success'
+        required
 			>
 				<Dropdown.Item value='read' onClick={() => setCapability('read')}>
 					Reader

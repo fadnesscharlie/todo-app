@@ -47,10 +47,10 @@ export default function AuthProvider(props) {
   //   can: can,
   // })
 
-  const login = (username, password) => {
-    if (testUsers[username]) {
+  const login = (role, username, password) => {
+    if (testUsers[role]) {
       setLoggedIn(true);
-      setCapabilities(testUsers[username].capabilities);
+      setCapabilities(testUsers[role].capabilities);
       const token = jwt.sign(username, secret);
       // validateToken(token);
       setToken(token);
