@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import axios from 'axios';
 
 import useForm from '../../hooks/form.js';
 import Form from '../form/form.js';
@@ -13,7 +14,6 @@ const ToDo = () => {
 	const { setting, setSetting } = useContext(SettingsContext);
 
 	const { handleChange, handleSubmit } = useForm(addItem);
-
 	function addItem(item) {
 		console.log(item);
 		item.id = uuid();
@@ -22,6 +22,19 @@ const ToDo = () => {
 			...setting,
 			list: [...setting.list, item],
 		});
+	}
+
+	async function todoDB() {
+		try {
+			let todo = await axios.get('http://localhost:3001/todos');
+			setSetting({
+				...setting,
+				list: todo.data,
+			});
+			console.log('setting.list:', setting && setting.list);
+		}	catch (e) {
+			console.log(e)
+		} 
 	}
 
 	function deleteItem(id) {
@@ -50,14 +63,16 @@ const ToDo = () => {
 	}
 
 	useEffect(() => {
+		todoDB()
+		// console.log('setting:', setting);
 		let incompleteCount = setting.list.filter((item) => !item.complete).length;
-		console.log('setting.list:', setting);
+		// console.log('setting.list:', setting);
 		setSetting({
 			...setting,
 			incomplete: incompleteCount,
 		});
 		document.title = `To Do List: ${setting.incomplete}`;
-	}, [setting.list]);
+	}, []);
 	return (
 		<>
 			<Header />

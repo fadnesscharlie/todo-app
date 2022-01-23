@@ -29,7 +29,7 @@ const testUsers = {
   },
 };
 
-const secret = "ZorkBestBoi";
+const secret = "HaruIsBestKitty";
 
 export const AuthContext = createContext();
 
@@ -37,6 +37,7 @@ export default function AuthProvider(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [capabilities, setCapabilities] = useState([]);
   const [token, setToken] = useState();
+  const [role, setRole] = useState();
 
   // const [authUser, setAuthUser] = useState({
   //   loggedIn: false,
@@ -47,13 +48,14 @@ export default function AuthProvider(props) {
   //   can: can,
   // })
 
-  const login = (role, username, password) => {
-    if (testUsers[role]) {
+  const login = (job, username, password) => {
+    if (testUsers[job]) {
       setLoggedIn(true);
-      setCapabilities(testUsers[role].capabilities);
+      setCapabilities(testUsers[job].capabilities);
       const token = jwt.sign(username, secret);
       // validateToken(token);
       setToken(token);
+      setRole(testUsers[job].role);
       console.log("Token", token);
     }
   };
@@ -79,12 +81,15 @@ export default function AuthProvider(props) {
   const state = {
     loggedIn,
     capabilities,
+    role,
     login: login,
     logout: logout,
     can: can
   };
 
   return (
-    <AuthContext.Provider value={state}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider value={state}>
+      {props.children}
+      </AuthContext.Provider>
   );
 }
