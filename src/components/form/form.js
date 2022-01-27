@@ -9,18 +9,18 @@ export default function form(props) {
 			<form className='bp3-form-group .modifier' onSubmit={props.handleSubmit}>
 				<h2 className='bp3-form-content title'>Add To Do Item</h2>
 
-				<label className='bp3-label' for='form-group-input'>
+				<label className='bp3-label' htmlFor='form-group-input'>
 					<span className='bp3-form-helper-text'>To Do Item</span>
 					<input
 						className='bp3-input'
 						onChange={props.handleChange}
-						name='text'
+						name='todos'
 						type='text'
 						placeholder='Item Details'
 					/>
 				</label>
 
-				<label className='bp3-label' for='form-group-input'>
+				<label className='bp3-label' htmlFor='form-group-input'>
 					<span className='bp3-form-helper-text'>Assigned To</span>
 					<input
 						className='bp3-input'
@@ -31,7 +31,7 @@ export default function form(props) {
 					/>
 				</label>
 
-				<label className='bp3-label' for='form-group-input'>
+				<label className='bp3-label' htmlFor='form-group-input'>
 					<span className='bp3-form-helper-text'>Difficulty</span>
 					<input
 						className='bp3-input'
@@ -44,7 +44,7 @@ export default function form(props) {
 					/>
 				</label>
 
-				<label for='form-group-input'>
+				<label htmlFor='form-group-input'>
 					<Button variant='outline-primary' type='submit'>
 						Add Item
 					</Button>

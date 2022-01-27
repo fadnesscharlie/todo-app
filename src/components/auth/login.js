@@ -2,13 +2,11 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
-// import { Button } from 'react-bootstrap';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [capability, setCapability] = useState('');
-
 	const state = useContext(AuthContext);
 
 	const handleChangeUsername = (e) => {
@@ -23,7 +21,6 @@ export default function Login() {
 	// };
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('capability:', capability);
 		state.login(capability, username, password);
 	};
 
@@ -47,7 +44,7 @@ export default function Login() {
 				id='dropdown-basic-button'
 				title='Role'
 				variant='success'
-        required
+				required
 			>
 				<Dropdown.Item value='read' onClick={() => setCapability('read')}>
 					Reader

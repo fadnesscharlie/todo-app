@@ -8,6 +8,8 @@ export default function Auth(props) {
 
 	const isLoggedIn = state.loggedIn;
 	const canDo = state.can(props.capability);
+
+	
 	const okToRender = isLoggedIn && canDo;
 
 	return <When condition={okToRender}>{props.children}</When>;

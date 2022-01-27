@@ -15,7 +15,8 @@ function settingsProvider(props) {
 	});
 
   return(
-    <SettingsContext.Provider value={{ setting, setSetting }}>
+    <SettingsContext.Provider 
+    value={{ setting, setSetting }}>
       {props.children}
     </SettingsContext.Provider>
   )

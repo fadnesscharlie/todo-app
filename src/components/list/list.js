@@ -13,6 +13,7 @@ export default function list(props) {
 			currPageNumber: e.target.id,
 		});
 	}
+	// console.log('setting in list.js underr handleClick function:', setting);
 
 	function perPageHandleClick(e) {
 		setSetting({
@@ -75,16 +76,16 @@ export default function list(props) {
 				{currentTodos.map((item) => (
           <Card className='CurrentTodos' key={item.id}>
 						<Card.Body>
-							<Card.Title>{item.text}</Card.Title>
-							<Card.Text>
+							<Card.Title>{item.todos}</Card.Title>
+							{/* <Card.Text>
 								<small>Assigned to: {item.assignee}</small>
-							</Card.Text>
+							</Card.Text> */}
 							<Card.Subtitle>
 								<small>Difficulty: {item.difficulty}</small>
 							</Card.Subtitle>
-							<Card.Subtitle onClick={() => props.toggleComplete(item.id)}>
+							{/* <Card.Subtitle onClick={() => props.toggleComplete(item.id)}>
 								Complete: {item.complete.toString()}
-							</Card.Subtitle>
+							</Card.Subtitle> */}
 							<hr />
 						</Card.Body>
 					</Card>
